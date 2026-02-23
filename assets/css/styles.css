@@ -1,0 +1,187 @@
+                                                                    /*Main*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'faceonfire';
+    src:url('../fonts/pixelfaceonfire.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'simplepixel';
+    src:url('../fonts/pixelmix.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --bg-color: #fcf7e3;       
+    --shelf-color: #7774b5;    
+    --slot-bg: #fcf7e3;        
+    --slot-border: #66a83d;     
+    --text-color: #272727;      
+    --accent: #dd534c;         
+}
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+    position: relative;
+    overflow-x: hidden;
+}
+                                                                    /*CRT*/
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      rgba(0,0,0,0.01) 0px,
+      rgba(0,0,0,0.01) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+    z-index: 10;
+    animation: flicker 0.4s infinite;
+}
+@keyframes flicker {
+    0%, 100% { opacity: 0.95; }
+    50% { opacity: 1; }
+}
+                                                                /* Header */
+.header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.header-title {
+    font-family: 'faceonfire', monospace;
+}
+.header-title {
+    font-weight: 900;
+    font-size: 2rem;
+    color: #272727;           
+    text-shadow: 1px 1px #fbc34b; 
+    text-align: center;
+    flex: 1;
+}
+.header-image {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+                                                                /* Shelves */
+.shelves-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    background: var(--shelf-color);
+    padding: 10px;
+    border: 2px solid var(--slot-border);
+    border-radius: 0; 
+}
+.slot {
+    background: var(--slot-bg);
+    border: 2px solid var(--slot-border);
+    border-radius: 0; 
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.slot[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--slot-bg);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border: 2px solid var(--slot-border);
+    border-radius: 0; 
+    font-size: 10px;
+    font-family: 'simplepixel', monospace;
+    white-space: nowrap;
+    z-index: 20;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+.slot:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-color: var(--accent);
+}
+.slot a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+                                                            /* Responsive */
+@media (max-width: 900px) {
+    .header-title {
+      font-size: 1.6rem;
+}
+.header-image {
+      width: 60px;
+      height: 60px;
+}
+.slot {
+      height: 100px;
+    }
+}
+@media (max-width: 600px) {
+.header {
+      flex-direction: column;
+      gap: 5px;
+}
+.header-title {
+      font-size: 1.4rem;
+}
+.header-image {
+      width: 50px;
+      height: 50px;
+}
+.slot {
+      height: 80px;
+}
+.slot[data-tooltip]:hover::after {
+      font-size: 8px;
+      bottom: 120%;
+}
+}
