@@ -1,11 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Switch</title>
-        <link rel="stylesheet" href="assets/css/styles.css">
-    </head>
-    <body>
-    </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro OS Layout</title>
+<link rel="stylesheet" href="assets/css/styles2.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-image left">
+          <img src="assets/images/arrows.png" alt="Left Element">
+        </div>
+    
+        <h1 class="header-title">Nintendo Switch</h1>
+    
+        <div class="header-image right">
+          <img src="assets/images/abyx.png" alt="Right Element">
+        </div>
+      </header>
+<div class="desktop">
+
+  <div class="window" id="win1">
+    <div class="titlebar">
+      Information
+      <div class="buttons">
+        <div class="circle red" onclick="closeWindow('win1')"></div>
+      </div>
+    </div>
+    <div class="content"></div>
+  </div>
+
+  <div class="window purple" id="win2">
+    <div class="titlebar">
+      Icon
+      <div class="buttons">
+        <div class="circle red" onclick="closeWindow('win2')"></div>
+      </div>
+    </div>
+    <div class="content"></div>
+  </div>
+
+  <div class="window greenWin" id="win3">
+    <div class="titlebar">
+      Games
+      <div class="buttons">
+        <div class="circle red" onclick="closeWindow('win3')"></div>
+      </div>
+    </div>
+    <div class="content"></div>
+  </div>
+
+  <div class="window" id="win4">
+    <div class="titlebar">
+      Logo
+      <div class="buttons">
+        <div class="circle red" onclick="closeWindow('win4')"></div>
+      </div>
+    </div>
+    <div class="content"></div>
+  </div>
+
+</div>
+
+<!-- TASKBAR -->
+<div class="taskbar">
+  <div class="task-icon" onclick="openWindow('win1')"><img src="assets/images/windowicon1.png"></div>
+  <div class="task-icon" onclick="openWindow('win2')"><img src="assets/images/windowicon2.png"></div>
+  <div class="task-icon" onclick="openWindow('win3')"><img src="assets/images/ataripixel.png"></div>
+  <div class="task-icon" onclick="openWindow('win4')"><img src="assets/images/windowicon4.png"></div>
+</div>
+
+<script>
+    function closeWindow(id) {
+      document.getElementById(id).classList.add("hidden");
+    }
+    
+    function openWindow(id) {
+      document.getElementById(id).classList.remove("hidden");
+    }
+    let highestZ = 1;
+
+function bringToFront(win) {
+  highestZ++;
+  win.style.zIndex = highestZ;
+}
+    document.querySelectorAll(".window").forEach(win => {
+
+// random starting positions
+win.style.top = Math.random() * 200 + "px";
+win.style.left = Math.random() * 200 + "px";
+
+const titlebar = win.querySelector(".titlebar");
+
+let offsetX = 0;
+let offsetY = 0;
+let isDragging = false;
+
+titlebar.addEventListener("mousedown", (e) => {
+
+  if (win.classList.contains("fullscreen")) return;
+
+  isDragging = true;
+  win.classList.add("dragging");
+  bringToFront(win);
+
+  offsetX = e.clientX - win.offsetLeft;
+  offsetY = e.clientY - win.offsetTop;
+
+  document.addEventListener("mousemove", drag);
+  document.addEventListener("mouseup", stopDrag);
+});
+
+function drag(e) {
+  if (!isDragging) return;
+
+  win.style.left = (e.clientX - offsetX) + "px";
+  win.style.top = (e.clientY - offsetY) + "px";
+}
+
+function stopDrag() {
+  isDragging = false;
+  win.classList.remove("dragging");
+  document.removeEventListener("mousemove", drag);
+  document.removeEventListener("mouseup", stopDrag);
+}
+
+// Bring to front on click
+win.addEventListener("mousedown", () => bringToFront(win));
+});
+    </script>
+
+</body>
 </html>

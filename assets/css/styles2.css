@@ -1,9 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-@font-face {
+  }
+  @font-face {
     font-family: 'faceonfire';
     src:url('../fonts/pixelfaceonfire.ttf') format('truetype');
     font-weight: normal;
@@ -15,79 +13,11 @@
     font-weight: normal;
     font-style: normal;
 }
-.page-layout {
-    width: 90%;
-    max-width: 1000px;
-    margin: 40px auto;
-  
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    grid-template-rows: auto auto;
-    gap: 20px;
-  }
-  /* Image styling */
-  .window-image img {
-    width: 100%;
-    object-fit: contain;
-    image-rendering: pixelated;
-  }
-@media (max-width: 700px) {
-    .page-layout {
-      grid-template-columns: 1fr;
-    }
-  
-    .window-description {
-      grid-column: auto;
-}
-}
-.page-layout {
-    width: 90%;
-    max-width: 1000px;
-    margin: 40px auto;
-
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 20px;
-}
-
-.window {
-    position: relative;
-    padding: 40px 20px 20px 20px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.box-small {
-    background-image: url("../images/box1.png");
-    min-height: 250px;
-}
-
-.box-medium {
-    background-image: url("../images/box2.png");
-    min-height: 250px;
-}
-
-.box-large {
-    background-image: url("../images/box3.png");
-    min-height: 350px;
-    grid-column: 1 / 3;  /* important */
-}
-:root {
-    --bg-color: #fcf7e3;       
-    --shelf-color: #7774b5;    
-    --slot-bg: #fcf7e3;        
-    --slot-border: #66a83d;     
-    --text-color: #272727;      
-    --accent: #dd534c;         
-}
-body {
-    font-family: 'Courier New', Courier, monospace;
-    background: var(--bg-color);
-    color: var(--text-color);
-    min-height: 100vh;
-    padding-bottom: 40px;
-    position: relative;
-    overflow-x: hidden;
+@font-face{
+    font-family: 'pagesfont';
+    src:url('../fonts/DePixelHalbfett.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 body::before {
     content: "";
@@ -107,3 +37,228 @@ body::before {
     0%, 100% { opacity: 0.95; }
     50% { opacity: 1; }
 }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fcf7e3;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.header-title {
+    font-family: 'pagesfont', monospace;
+}
+.header-title {
+    font-weight: 900;
+    font-size: 2rem;
+    color: #272727;           
+    text-shadow: 1px 1px #fbc34b; 
+    text-align: center;
+    flex: 1;
+}
+.header-image {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+  /* ====== WINDOW AREA ====== */
+  .desktop {
+    flex: 1;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+  }
+  
+  /* ====== WINDOW STYLE ====== */
+  .window {
+    background: #fcf7e3;
+    border: 4px solid #2a2a2a;
+    border-radius: 16px;
+    box-shadow: 6px 6px 0px #2a2a2a;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    transition: transform 0.2s ease;
+  }
+  
+  .window.hidden {
+    display: none;
+  }
+  
+  .titlebar {
+    height: 40px;
+    background: #d0d8e2;
+    border-bottom: 4px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    font-family: 'simplepixel', monospace;
+    font-weight: bold;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #2a2a2a;
+    cursor: pointer;
+  }
+  
+  .red { background: #ff8e8e; }
+  .yellow { background: #ffe48e; }
+  .green { background: #9ce89c; }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    background: #fffdf4;
+  }
+  
+  /* alternate colors */
+  .purple .titlebar { background: #d0d8e2; }
+  .greenWin .titlebar { background: #d0d8e2; }
+  
+  .purple .content { background: #fffdf4; }
+  .greenWin .content { background: #fffdf4; }
+  
+  /* ====== TASKBAR ====== */
+  .taskbar {
+    position: fixed;      /* KEY PART */
+    bottom: 0;            /* stick to bottom */
+    left: 0;
+    width: 100%;
+  
+    height: 80px;
+    background: #6bbf54;
+    border-top: 4px solid #454545;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  
+    z-index: 1000;        /* stays above windows */
+  }
+  
+  .task-icon {
+    width: 60px;
+    height: 60px;
+    background: #f4f0e8;
+    border: 4px solid #2a2a2a;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0px #2a2a2a;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    overflow: hidden;
+  }
+  
+  .task-icon:hover {
+    transform: translateY(-4px);
+  }
+  
+  .task-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Responsive tweak */
+  @media (max-width: 600px) {
+    .desktop {
+      padding: 15px;
+    }
+    .taskbar {
+      height: 70px;
+    }
+    .task-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  /* Make windows float instead of strict grid once JS activates */
+.desktop {
+    position: relative;
+  }
+  
+  .window {
+    position: absolute;
+    width: 320px;
+    min-height: 220px;
+    cursor: default;
+    position: absolute;
+  width: 320px;
+  min-width: 220px;
+  min-height: 150px;
+
+  resize: both;          /* enables resizing */
+  overflow: auto;        /* required for resize to work */
+  }
+  
+  /* Prevent text selection while dragging */
+  .window.dragging {
+    user-select: none;
+
+  }
+  .window.minimized {
+    display: none;
+  }
+  .window.fullscreen {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 80px); /* account for taskbar */
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .titlebar {
+    cursor: grab;
+  }
+  
+  .titlebar:active {
+    cursor: grabbing;
+  }
+  .page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2000; /* always above windows */
+  }
+  
+  .desktop-wrapper {
+    position: relative;
+    height: calc(100vh - 160px); /* adjust for title + taskbar */
+    overflow: hidden; /* prevents windows from escaping */
+  }
+  .desktop-wrapper {
+    padding-bottom: 100px; /* slightly bigger than taskbar height */
+  }
+  .desktop {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
