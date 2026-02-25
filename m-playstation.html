@@ -78,17 +78,23 @@
     function openWindow(id) {
       document.getElementById(id).classList.remove("hidden");
     }
-    let highestZ = 1;
+    let highestZ = 10;   // keep it low
+    const TASKBAR_Z = 1000;
 
-function bringToFront(win) {
+    function bringToFront(win) {
   highestZ++;
+  if (highestZ >= TASKBAR_Z) highestZ = 10;
   win.style.zIndex = highestZ;
 }
     document.querySelectorAll(".window").forEach(win => {
 
 // random starting positions
-win.style.top = Math.random() * 200 + "px";
-win.style.left = Math.random() * 200 + "px";
+let offset = 40;
+
+document.querySelectorAll(".window").forEach((win, index) => {
+  win.style.left = (50 + index * offset) + "px";
+  win.style.top = (50 + index * offset) + "px";
+});
 
 const titlebar = win.querySelector(".titlebar");
 
@@ -114,8 +120,21 @@ titlebar.addEventListener("mousedown", (e) => {
 function drag(e) {
   if (!isDragging) return;
 
-  win.style.left = (e.clientX - offsetX) + "px";
-  win.style.top = (e.clientY - offsetY) + "px";
+  const wrapper = document.querySelector(".desktop-wrapper");
+
+  const maxX = wrapper.clientWidth - win.offsetWidth;
+  const TASKBAR_HEIGHT = 80;
+    const maxY = wrapper.clientHeight - win.offsetHeight - TASKBAR_HEIGHT;
+
+  let newX = e.clientX - offsetX;
+  let newY = e.clientY - offsetY;
+
+  // Clamp values inside boundaries
+  newX = Math.max(0, Math.min(newX, maxX));
+  newY = Math.max(0, Math.min(newY, maxY));
+
+  win.style.left = newX + "px";
+  win.style.top = newY + "px";
 }
 
 function stopDrag() {

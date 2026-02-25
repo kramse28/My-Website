@@ -98,6 +98,9 @@ body::before {
     flex-direction: column;
     min-height: 220px;
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
   }
   
   .window.hidden {
@@ -138,6 +141,8 @@ body::before {
     padding: 20px;
     background: #fffdf4;
     font-family: 'simplepixel', monospace;
+    flex: 1;
+    overflow-y: auto;
   }
   
   /* alternate colors */

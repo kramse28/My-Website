@@ -102,8 +102,12 @@
     document.querySelectorAll(".window").forEach(win => {
 
 // random starting positions
-win.style.top = Math.random() * 200 + "px";
-win.style.left = Math.random() * 200 + "px";
+let offset = 40;
+
+document.querySelectorAll(".window").forEach((win, index) => {
+  win.style.left = (50 + index * offset) + "px";
+  win.style.top = (50 + index * offset) + "px";
+});
 
 const titlebar = win.querySelector(".titlebar");
 
