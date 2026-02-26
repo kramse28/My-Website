@@ -11,24 +11,43 @@
         <div class="header-image left">
           <img src="assets/images/arrows.png" alt="Left Element">
         </div>
-    
-        <h1 class="header-title">Nintendo Switch</h1>
-    
+    <h1 class="header-title">Switch</h1>
         <div class="header-image right">
           <img src="assets/images/abyx.png" alt="Right Element">
         </div>
-      </header>
-<div class="desktop">
-
-  <div class="window" id="win1">
-    <div class="titlebar">
-      Information
-      <div class="buttons">
-        <div class="circle red" onclick="closeWindow('win1')"></div>
-      </div>
+    </header>
+        <h1 class="page-title"></h1>
+    <div class="desktop-wrapper">
+    <div class="desktop">
+        <div class="window" id="win1">
+            <div class="titlebar">
+            Information
+                <div class="buttons">
+                    <div class="circle red" onclick="closeWindow('win1')"></div>
+                </div>
+            </div>
+            <div class="content">
+                <p>
+                    <h3>History:</h3>
+                    Released in 2017, the Switch is a hybrid console that functions as both a home and portable system.
+                        <h3>Accomplishments:</h3>
+                        <ul>
+                            <li>Sold over 130 million units (and counting)</li>
+                            <li>Seamlessly blends handheld and docked play</li>
+                            <li>Strong first-party hits like The Legend of Zelda: Breath of the Wild and Animal Crossing: New Horizons</li>
+                            <li>Revitalized Nintendo’s global market position</li>
+                        </ul>
+                        <h3>Specifications:</h3>
+                        <ul>
+                            <li>Release Date: March 2017</li>
+                            <li>Developer: Nintendo PTD</li>
+                            <li>Manufacturer: Foxconn - Hosiden</li>
+                            <li>Generation: Eigth/Ninth</li>
+                            <li>Best-Selling Game: Mario Kart 8</li>
+                        </ul>
+                </p>
+              </div>
     </div>
-    <div class="content"></div>
-  </div>
 
   <div class="window purple" id="win2">
     <div class="titlebar">
@@ -37,7 +56,8 @@
         <div class="circle red" onclick="closeWindow('win2')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content"><img src="assets/images/switchpixel2.png" alt="Atari Image">
+    </div>
   </div>
 
   <div class="window greenWin" id="win3">
@@ -47,9 +67,22 @@
         <div class="circle red" onclick="closeWindow('win3')"></div>
       </div>
     </div>
-    <div class="content"></div>
-  </div>
-
+    <div class="content">
+        <ul>
+            <li>The Legend of Zelda: Breath of the Wild</li>
+            <p></p>
+            <li>Super Mario Odyssey</li>
+            <p></p>
+            <li>Animal Crossing: New Horizons</li>
+            <p></p>
+            <li>Mario Kart 8 Deluxe</li>
+            <p></p>
+            <li>Super Smash Bros. Ultimate</li>
+            <p></p>
+            <li>Metroid Dread</li>
+        </ul>
+      </div>
+    </div>
   <div class="window" id="win4">
     <div class="titlebar">
       Logo
@@ -57,12 +90,22 @@
         <div class="circle red" onclick="closeWindow('win4')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content">
+        <img src="assets/images/switchlogo.png" alt="Atari Image">
+    </div>
   </div>
 
 </div>
 
 <!-- TASKBAR -->
+<div class="taskbar">
+  <div class="task-icon" onclick="openWindow('win1')"><img src="assets/images/windowicon1.png"></div>
+  <div class="task-icon" onclick="openWindow('win2')"><img src="assets/images/windowicon2.png"></div>
+  <div class="task-icon" onclick="openWindow('win3')"><img src="assets/images/switchpixel2.png"></div>
+  <div class="task-icon" onclick="openWindow('win4')"><img src="assets/images/windowicon4.png"></div>
+  <a href="index.html" class="task-icon"><img src="assets/images/homepixel2.png"></a>
+</div>
+
 <script>
     function closeWindow(id) {
       document.getElementById(id).classList.add("hidden");

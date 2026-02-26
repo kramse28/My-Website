@@ -11,24 +11,43 @@
         <div class="header-image left">
           <img src="assets/images/arrows.png" alt="Left Element">
         </div>
-    
-        <h1 class="header-title">Super NES</h1>
-    
+    <h1 class="header-title">Super NES</h1>
         <div class="header-image right">
           <img src="assets/images/abyx.png" alt="Right Element">
         </div>
-      </header>
-<div class="desktop">
-
-  <div class="window" id="win1">
-    <div class="titlebar">
-      Information
-      <div class="buttons">
-        <div class="circle red" onclick="closeWindow('win1')"></div>
-      </div>
+    </header>
+        <h1 class="page-title"></h1>
+    <div class="desktop-wrapper">
+    <div class="desktop">
+        <div class="window" id="win1">
+            <div class="titlebar">
+            Information
+                <div class="buttons">
+                    <div class="circle red" onclick="closeWindow('win1')"></div>
+                </div>
+            </div>
+            <div class="content">
+                <p>
+                    <h3>History:</h3>
+                    Nintendo’s 16-bit successor to the NES, released in 1990 in Japan and 1991 in North America.
+                        <h3>Accomplishments:</h3>
+                        <ul>
+                            <li>Sold nearly 50 million units</li>
+                            <li>Advanced graphics with Mode 7 scaling effects</li>
+                            <li>Delivered landmark titles like Super Mario World and The Legend of Zelda: A Link to the Past</li>
+                            <li>Cemented Nintendo’s dominance in the 16-bit generation</li>
+                        </ul>
+                        <h3>Specifications:</h3>
+                        <ul>
+                            <li>Release Date: November 1990</li>
+                            <li>Developer: Nintendo R&D2</li>
+                            <li>Manufacturer: Nintendo</li>
+                            <li>Generation: Fourth</li>
+                            <li>Best-Selling Game: Pack-in: Super Mario World</li>
+                        </ul>
+                </p>
+              </div>
     </div>
-    <div class="content"></div>
-  </div>
 
   <div class="window purple" id="win2">
     <div class="titlebar">
@@ -37,7 +56,8 @@
         <div class="circle red" onclick="closeWindow('win2')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content"><img src="assets/images/nespixel.png" alt="Atari Image">
+    </div>
   </div>
 
   <div class="window greenWin" id="win3">
@@ -47,9 +67,22 @@
         <div class="circle red" onclick="closeWindow('win3')"></div>
       </div>
     </div>
-    <div class="content"></div>
-  </div>
-
+    <div class="content">
+        <ul>
+            <li>Super Mario World</li>
+            <p></p>
+            <li>The Legend of Zelda: A Link to the Past</li>
+            <p></p>
+            <li>Super Metroid</li>
+            <p></p>
+            <li>Chrono Trigger</li>
+            <p></p>
+            <li>Donkey Kong Country</li>
+            <p></p>
+            <li>Street Fighter II</li>
+        </ul>
+      </div>
+    </div>
   <div class="window" id="win4">
     <div class="titlebar">
       Logo
@@ -57,7 +90,9 @@
         <div class="circle red" onclick="closeWindow('win4')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content">
+        <img src="assets/images/neslogo.png" alt="Atari Image">
+    </div>
   </div>
 
 </div>
@@ -68,6 +103,7 @@
   <div class="task-icon" onclick="openWindow('win2')"><img src="assets/images/windowicon2.png"></div>
   <div class="task-icon" onclick="openWindow('win3')"><img src="assets/images/nespixel.png"></div>
   <div class="task-icon" onclick="openWindow('win4')"><img src="assets/images/windowicon4.png"></div>
+  <a href="index.html" class="task-icon"><img src="assets/images/homepixel2.png"></a>
 </div>
 
 <script>

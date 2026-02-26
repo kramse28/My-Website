@@ -11,24 +11,47 @@
         <div class="header-image left">
           <img src="assets/images/arrows.png" alt="Left Element">
         </div>
-    
-        <h1 class="header-title">Wii</h1>
-    
+    <h1 class="header-title">Wii</h1>
         <div class="header-image right">
           <img src="assets/images/abyx.png" alt="Right Element">
         </div>
-      </header>
-<div class="desktop">
-
-  <div class="window" id="win1">
-    <div class="titlebar">
-      Information
-      <div class="buttons">
-        <div class="circle red" onclick="closeWindow('win1')"></div>
-      </div>
+    </header>
+        <h1 class="page-title"></h1>
+    <div class="desktop-wrapper">
+    <div class="desktop">
+        <div class="window" id="win1">
+            <div class="titlebar">
+            Information
+                <div class="buttons">
+                    <div class="circle red" onclick="closeWindow('win1')"></div>
+                </div>
+            </div>
+            <div class="content">
+                <p>
+                    <h3>History:</h3>
+                    Nintendo’s motion-controlled console released in 2006.
+                        <h3>Accomplishments:</h3>
+                        <ul>
+                            <li>Sold over 100 million units</li>
+                            <li>Revolutionized motion controls with the Wii Remote</li>
+                            <li>Massive mainstream appeal through Wii Sports</li>
+                            <li>Broadened gaming demographics significantly</li>
+                        </ul>
+                        <h3>Specifications:</h3>
+                        <ul>
+                            <li>Release Date: November 2006</li>
+                            <p></p>
+                            <li>Developer: Nintendo IRD</li>
+                            <p></p>
+                            <li>Manufacturer: Foxconn</li>
+                            <p></p>
+                            <li>Generation: Seventh</li>
+                            <p></p>
+                            <li>Best-Selling Game: Wii Sports - Mario Kart Wii</li>
+                        </ul>
+                </p>
+              </div>
     </div>
-    <div class="content"></div>
-  </div>
 
   <div class="window purple" id="win2">
     <div class="titlebar">
@@ -37,7 +60,8 @@
         <div class="circle red" onclick="closeWindow('win2')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content"><img src="assets/images/wiipixel2.png" alt="Atari Image">
+    </div>
   </div>
 
   <div class="window greenWin" id="win3">
@@ -47,9 +71,17 @@
         <div class="circle red" onclick="closeWindow('win3')"></div>
       </div>
     </div>
-    <div class="content"></div>
-  </div>
-
+    <div class="content">
+        <ul>
+            <li>Wii Sports</li>
+            <li>Super Mario Galaxy</li>
+            <li>The Legend of Zelda: Twilight Princess</li>
+            <li>Mario Kart Wii</li>
+            <li>Super Smash Bro's Brawl</li>
+            <li>Metroid Prime 3: Corruption</li>
+        </ul>
+      </div>
+    </div>
   <div class="window" id="win4">
     <div class="titlebar">
       Logo
@@ -57,7 +89,9 @@
         <div class="circle red" onclick="closeWindow('win4')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content">
+        <img src="assets/images/wiilogo.png" alt="Atari Image">
+    </div>
   </div>
 
 </div>
@@ -68,6 +102,7 @@
   <div class="task-icon" onclick="openWindow('win2')"><img src="assets/images/windowicon2.png"></div>
   <div class="task-icon" onclick="openWindow('win3')"><img src="assets/images/wiipixel2.png"></div>
   <div class="task-icon" onclick="openWindow('win4')"><img src="assets/images/windowicon4.png"></div>
+  <a href="index.html" class="task-icon"><img src="assets/images/homepixel2.png"></a>
 </div>
 
 <script>

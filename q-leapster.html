@@ -11,24 +11,47 @@
         <div class="header-image left">
           <img src="assets/images/arrows.png" alt="Left Element">
         </div>
-    
-        <h1 class="header-title">Leapster</h1>
-    
+    <h1 class="header-title">Leapster</h1>
         <div class="header-image right">
           <img src="assets/images/abyx.png" alt="Right Element">
         </div>
-      </header>
-<div class="desktop">
-
-  <div class="window" id="win1">
-    <div class="titlebar">
-      Information
-      <div class="buttons">
-        <div class="circle red" onclick="closeWindow('win1')"></div>
-      </div>
+    </header>
+        <h1 class="page-title"></h1>
+    <div class="desktop-wrapper">
+    <div class="desktop">
+        <div class="window" id="win1">
+            <div class="titlebar">
+            Information
+                <div class="buttons">
+                    <div class="circle red" onclick="closeWindow('win1')"></div>
+                </div>
+            </div>
+            <div class="content">
+                <p>
+                    <h3>History:</h3>
+                    Released in 2003 by LeapFrog Enterprises, the Leapster was an educational handheld gaming system designed for young children (typically ages 4–8). It used interchangeable game cartridges and featured a stylus-based touchscreen, aiming to blend learning with interactive play.
+                        <h3>Accomplishments:</h3>
+                        <ul>
+                            <li>Helped pioneer the educational gaming handheld market</li>
+                            <li>Featured curriculum-based games focused on reading, math, spelling, and problem-solving</li>
+                            <li>Durable, child-focused hardware design with parental appeal</li>
+                            <li>Became one of the most successful dedicated educational handhelds of the mid-2000s</li>
+                        </ul>
+                        <h3>Specifications:</h3>
+                        <ul>
+                            <li>Release Date: October 2003</li>
+                            <p></p>
+                            <li>Developer: Leapfrog Enterprise</li>
+                            <p></p>
+                            <li>Manufacturer: Leapfrog Enterprise</li>
+                            <p></p>
+                            <li>Generation: Sixth</li>
+                            <p></p>
+                            <li>Best-Selling Game: Spongebob squarepants Saves the Day</li>
+                        </ul>
+                </p>
+              </div>
     </div>
-    <div class="content"></div>
-  </div>
 
   <div class="window purple" id="win2">
     <div class="titlebar">
@@ -37,7 +60,8 @@
         <div class="circle red" onclick="closeWindow('win2')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content"><img src="assets/images/leapsterpixel.png" alt="Atari Image">
+    </div>
   </div>
 
   <div class="window greenWin" id="win3">
@@ -47,9 +71,17 @@
         <div class="circle red" onclick="closeWindow('win3')"></div>
       </div>
     </div>
-    <div class="content"></div>
-  </div>
-
+    <div class="content">
+        <ul>
+            <li>SpongeBob SquarePants</li>
+            <li>Disney Pixar Cars</li>
+            <li>Dora the Explorer</li>
+            <li>Batman</li>
+            <li>Thomas and Friends</li>
+            <li>Mr. Pencil Saves Doodleburg</li>
+        </ul>
+      </div>
+    </div>
   <div class="window" id="win4">
     <div class="titlebar">
       Logo
@@ -57,7 +89,9 @@
         <div class="circle red" onclick="closeWindow('win4')"></div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content">
+        <img src="assets/images/leaplogo.png" alt="Atari Image">
+    </div>
   </div>
 
 </div>
@@ -68,6 +102,7 @@
   <div class="task-icon" onclick="openWindow('win2')"><img src="assets/images/windowicon2.png"></div>
   <div class="task-icon" onclick="openWindow('win3')"><img src="assets/images/leapsterpixel.png"></div>
   <div class="task-icon" onclick="openWindow('win4')"><img src="assets/images/windowicon4.png"></div>
+  <a href="index.html" class="task-icon"><img src="assets/images/homepixel2.png"></a>
 </div>
 
 <script>
