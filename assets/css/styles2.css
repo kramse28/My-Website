@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
-  }
-  @font-face {
+}
+@font-face {
     font-family: 'faceonfire';
     src:url('../fonts/pixelfaceonfire.ttf') format('truetype');
     font-weight: normal;
@@ -37,15 +37,15 @@ body::before {
     0%, 100% { opacity: 0.95; }
     50% { opacity: 1; }
 }
-  body {
+body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #fcf7e3;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  .header {
+}
+.header {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
@@ -78,17 +78,14 @@ body::before {
     object-fit: contain;
     image-rendering: pixelated;
 }
-  /* ====== WINDOW AREA ====== */
-  .desktop {
+.desktop {
     flex: 1;
     padding: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
-  }
-  
-  /* ====== WINDOW STYLE ====== */
-  .window {
+}
+.window {
     background: #fcf7e3;
     border: 4px solid #2a2a2a;
     border-radius: 16px;
@@ -101,13 +98,11 @@ body::before {
     display: flex;
     flex-direction: column;
     max-height: 100%;
-  }
-  
-  .window.hidden {
+}
+.window.hidden {
     display: none;
-  }
-  
-  .titlebar {
+}
+.titlebar {
     height: 40px;
     background: #d0d8e2;
     border-bottom: 4px solid #2a2a2a;
@@ -117,61 +112,50 @@ body::before {
     padding: 0 12px;
     font-family: 'simplepixel', monospace;
     font-weight: bold;
-  }
-  
-  .buttons {
+}
+.buttons {
     display: flex;
     gap: 8px;
-  }
-  
-  .circle {
+}
+.circle {
     width: 14px;
     height: 14px;
     border-radius: 50%;
     border: 2px solid #2a2a2a;
     cursor: pointer;
-  }
+}
   
-  .red { background: #ff8e8e; }
-  .yellow { background: #ffe48e; }
-  .green { background: #9ce89c; }
+.red { background: #ff8e8e; }
+.yellow { background: #ffe48e; }
+.green { background: #9ce89c; }
   
-  .content {
+.content {
     flex: 1;
     padding: 20px;
     background: #fffdf4;
     font-family: 'simplepixel', monospace;
     flex: 1;
     overflow-y: auto;
-  }
-  
-  /* alternate colors */
-  .purple .titlebar { background: #d0d8e2; }
-  .greenWin .titlebar { background: #d0d8e2; }
-  
-  .purple .content { background: #fffdf4; }
-  .greenWin .content { background: #fffdf4; }
-  
-  /* ====== TASKBAR ====== */
-  .taskbar {
-    position: fixed;      /* KEY PART */
-    bottom: 0;            /* stick to bottom */
+}
+.purple .titlebar { background: #d0d8e2; }
+.greenWin .titlebar { background: #d0d8e2; }
+.purple .content { background: #fffdf4; }
+.greenWin .content { background: #fffdf4; }
+.taskbar {
+    position: fixed; 
+    bottom: 0;
     left: 0;
     width: 100%;
-  
     height: 80px;
     background: #6bbf54;
     border-top: 4px solid #454545;
-  
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 18px;
-  
-    z-index: 1000;        /* stays above windows */
-  }
-  
-  .task-icon {
+    z-index: 1000;
+}
+.task-icon {
     width: 60px;
     height: 60px;
     background: #f4f0e8;
@@ -181,95 +165,87 @@ body::before {
     cursor: pointer;
     transition: transform 0.15s ease;
     overflow: hidden;
-  }
-  
-  .task-icon:hover {
+} 
+.task-icon:hover {
     transform: translateY(-4px);
-  }
-  
-  .task-icon img {
+}
+.task-icon img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  /* Responsive tweak */
-  @media (max-width: 600px) {
+}
+@media (max-width: 600px) {
     .desktop {
-      padding: 15px;
+        padding: 15px;
     }
     .taskbar {
-      height: 70px;
+        height: 70px;
     }
     .task-icon {
-      width: 50px;
-      height: 50px;
+        width: 50px;
+        height: 50px;
     }
-  }
-  /* Make windows float instead of strict grid once JS activates */
+}
 .desktop {
     position: relative;
   }
   
-  .window {
+.window {
     position: absolute;
     width: 320px;
     min-height: 220px;
     cursor: default;
     position: absolute;
-  width: 320px;
-  min-width: 220px;
-  min-height: 150px;
-
-  resize: both;          /* enables resizing */
-  overflow: auto;        /* required for resize to work */
-  }
-  
-  /* Prevent text selection while dragging */
-  .window.dragging {
+    width: 320px;
+    min-width: 220px;
+    min-height: 150px;
+    resize: both;
+    overflow: auto;
+}
+.window.dragging {
     user-select: none;
-
-  }
-  .window.minimized {
+}
+.window.minimized {
     display: none;
-  }
-  .window.fullscreen {
+}
+.window.fullscreen {
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: calc(100vh - 80px); /* account for taskbar */
+    height: calc(100vh - 80px);
     border-radius: 0;
     box-shadow: none;
-  }
-  .titlebar {
+}
+.titlebar {
     cursor: grab;
-  }
-  
-  .titlebar:active {
+}
+.titlebar:active {
     cursor: grabbing;
-  }
-  .page-title {
+}
+.page-title {
     text-align: center;
     margin-bottom: 20px;
     position: relative;
-    z-index: 2000; /* always above windows */
-  }
-  
-  .desktop-wrapper {
+    z-index: 2000;
+}
+.desktop-wrapper {
     position: relative;
-    height: calc(100vh - 160px); /* adjust for title + taskbar */
-    overflow: hidden; /* prevents windows from escaping */
-  }
-  .desktop-wrapper {
-    padding-bottom: 100px; /* slightly bigger than taskbar height */
-  }
-  .desktop {
+    height: calc(100vh - 160px);
+    overflow: hidden;
+}
+.desktop-wrapper {
+    padding-bottom: 100px; 
+}
+.desktop {
     position: relative;
     width: 100%;
     height: 100%;
-  }
-  .content img {
+}
+.content img {
     width: 100%;
     height: auto;
     display: block;
-  }
+}
+.titlebar {
+    touch-action: none;
+}

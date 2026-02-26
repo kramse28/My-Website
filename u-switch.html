@@ -107,82 +107,103 @@
 </div>
 
 <script>
-    function closeWindow(id) {
-      document.getElementById(id).classList.add("hidden");
-    }
+    document.addEventListener("DOMContentLoaded", () => {
     
-    function openWindow(id) {
-      document.getElementById(id).classList.remove("hidden");
-    }
-    let highestZ = 10;   // keep it low
-    const TASKBAR_Z = 1000;
-
-    function bringToFront(win) {
-  highestZ++;
-  if (highestZ >= TASKBAR_Z) highestZ = 10;
-  win.style.zIndex = highestZ;
-}
-    document.querySelectorAll(".window").forEach(win => {
-
-// random starting positions
-let offset = 40;
-
-document.querySelectorAll(".window").forEach((win, index) => {
-  win.style.left = (50 + index * offset) + "px";
-  win.style.top = (50 + index * offset) + "px";
-});
-
-const titlebar = win.querySelector(".titlebar");
-
-let offsetX = 0;
-let offsetY = 0;
-let isDragging = false;
-
-titlebar.addEventListener("mousedown", (e) => {
-
-  if (win.classList.contains("fullscreen")) return;
-
-  isDragging = true;
-  win.classList.add("dragging");
-  bringToFront(win);
-
-  offsetX = e.clientX - win.offsetLeft;
-  offsetY = e.clientY - win.offsetTop;
-
-  document.addEventListener("mousemove", drag);
-  document.addEventListener("mouseup", stopDrag);
-});
-
-function drag(e) {
-  if (!isDragging) return;
-
-  const wrapper = document.querySelector(".desktop-wrapper");
-
-  const maxX = wrapper.clientWidth - win.offsetWidth;
-  const TASKBAR_HEIGHT = 80;
-    const maxY = wrapper.clientHeight - win.offsetHeight - TASKBAR_HEIGHT;
-
-  let newX = e.clientX - offsetX;
-  let newY = e.clientY - offsetY;
-
-  // Clamp values inside boundaries
-  newX = Math.max(0, Math.min(newX, maxX));
-  newY = Math.max(0, Math.min(newY, maxY));
-
-  win.style.left = newX + "px";
-  win.style.top = newY + "px";
-}
-
-function stopDrag() {
-  isDragging = false;
-  win.classList.remove("dragging");
-  document.removeEventListener("mousemove", drag);
-  document.removeEventListener("mouseup", stopDrag);
-}
-
-// Bring to front on click
-win.addEventListener("mousedown", () => bringToFront(win));
-});
+      /* ---------- WINDOW OPEN / CLOSE ---------- */
+    
+      function closeWindow(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add("hidden");
+      }
+    
+      function openWindow(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove("hidden");
+      }
+    
+      window.closeWindow = closeWindow;
+      window.openWindow = openWindow;
+    
+      /* ---------- Z INDEX CONTROL ---------- */
+    
+      let highestZ = 10;
+      const TASKBAR_Z = 1000;
+    
+      function bringToFront(win) {
+        highestZ++;
+        if (highestZ >= TASKBAR_Z) highestZ = 10;
+        win.style.zIndex = highestZ;
+      }
+    
+      /* ---------- FIND CORRECT WRAPPER ---------- */
+    
+      const wrapper =
+        document.querySelector(".desktop-wrapper") ||
+        document.querySelector(".desktop");
+    
+      if (!wrapper) return;
+    
+      /* ---------- INITIAL WINDOW POSITIONING ---------- */
+    
+      let offset = 40;
+      document.querySelectorAll(".window").forEach((win, index) => {
+        win.style.position = "absolute";
+        win.style.left = (50 + index * offset) + "px";
+        win.style.top = (50 + index * offset) + "px";
+      });
+    
+      /* ---------- DRAG FUNCTIONALITY (DESKTOP + MOBILE) ---------- */
+    
+      document.querySelectorAll(".window").forEach(win => {
+    
+        const titlebar = win.querySelector(".titlebar");
+        if (!titlebar) return;
+    
+        let offsetX = 0;
+        let offsetY = 0;
+        let isDragging = false;
+    
+        titlebar.addEventListener("pointerdown", (e) => {
+    
+          if (win.classList.contains("fullscreen")) return;
+    
+          isDragging = true;
+          bringToFront(win);
+    
+          offsetX = e.clientX - win.offsetLeft;
+          offsetY = e.clientY - win.offsetTop;
+    
+          document.addEventListener("pointermove", drag);
+          document.addEventListener("pointerup", stopDrag);
+        });
+    
+        function drag(e) {
+          if (!isDragging) return;
+    
+          const maxX = wrapper.clientWidth - win.offsetWidth;
+          const maxY = wrapper.clientHeight - win.offsetHeight;
+    
+          let newX = e.clientX - offsetX;
+          let newY = e.clientY - offsetY;
+    
+          newX = Math.max(0, Math.min(newX, maxX));
+          newY = Math.max(0, Math.min(newY, maxY));
+    
+          win.style.left = newX + "px";
+          win.style.top = newY + "px";
+        }
+    
+        function stopDrag() {
+          isDragging = false;
+          document.removeEventListener("pointermove", drag);
+          document.removeEventListener("pointerup", stopDrag);
+        }
+    
+        win.addEventListener("pointerdown", () => bringToFront(win));
+    
+      });
+    
+    });
     </script>
 
 </body>
